@@ -11,7 +11,7 @@ const anecdotes = [
   'The only way to go fast, is to go well.'
 ]
 
-const getRandom = (limit, offset) => Math.floor(Math.random() * limit + offset);
+const getRandomInt = (max, min) => Math.floor(Math.random() * (max - min) + min);
 
 const Section = ({ title, content, votes }) => (
   <>
@@ -25,7 +25,7 @@ const Button = ({ text, onClick }) => <button onClick={onClick}>{text}</button>;
 
 const App = () => {
 
-  const getRandomAnecdoteIndex = () => getRandom(anecdotes.length, 0);
+  const getRandomAnecdoteIndex = () => getRandomInt(anecdotes.length, 0);
   const [selected, setSelected] = useState(getRandomAnecdoteIndex());
   const [votes, setVotes] = useState(Array(anecdotes.length).fill(0));
   const maxVotes = Math.max(...votes);
